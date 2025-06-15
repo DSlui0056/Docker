@@ -18,9 +18,10 @@ WORKDIR /var/www/html
 # Copy project files
 COPY .. /var/www/html
 
+
 # Install Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
+RUN composer require fakerphp/faker
 # Install PHP dependencies
 RUN composer install --no-dev --optimize-autoloader
 
